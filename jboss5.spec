@@ -31,9 +31,23 @@ install -d -m 755 %{buildroot}/opt/%{name}
  
 cp -R . %{buildroot}/opt/%{name}
 install -d -m 755 %{buildroot}%{_initrddir}
-install -d -m 755 %{buildroot}%{_sysconfdir}/sysconfig
-install -p -m 755 %{SOURCE1} %{buildroot}%{_initrddir}/%{name}
+install -p -m 755 %{buildroot}/opt/%{name}/bin/jboss_init_redhat.sh %{buildroot}%{_initrddir}/%{name}
 rm -rf %{buildroot}/opt/%{name}/server/*/deploy/ROOT.war
+mkdir %{buildroot}/opt/%{name}/server/default/undeploy
+mv %{buildroot}/opt/%{name}/server/default/deploy/admin-console.war \
+	%{buildroot}/opt/%{name}/server/default/undeploy
+mv %{buildroot}/opt/%{name}/server/default/deploy/jmx-console.war \
+	%{buildroot}/opt/%{name}/server/default/undeploy
+mv %{buildroot}/opt/%{name}/server/default/deploy/jbossws.sar \
+	%{buildroot}/opt/%{name}/server/default/undeploy
+mv %{buildroot}/opt/%{name}/server/default/deploy/jbossws-console.war \
+	%{buildroot}/opt/%{name}/server/default/undeploy
+mv %{buildroot}/opt/%{name}/server/default/deploy/jmx-remoting.sar \
+	%{buildroot}/opt/%{name}/server/default/undeploy
+mv %{buildroot}/opt/%{name}/server/default/deploy/profileservice-secured.jar \
+	%{buildroot}/opt/%{name}/server/default/undeploy
+mv %{buildroot}/opt/%{name}/server/default/deploy/xnio-provider.jar \
+	%{buildroot}/opt/%{name}/server/default/undeploy
  
 %clean
 rm -rf %{buildroot}
