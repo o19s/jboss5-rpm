@@ -8,7 +8,6 @@ URL             : http://www.jboss.org/
 BuildArch       : noarch
 License         : LGPL
 Source0         : http://downloads.sourceforge.net/project/jboss/JBoss/JBoss-5.1.0.GA/jboss-%{version}-jdk6.zip
-Source1         : %{name}.init
 BuildRoot       : %{_tmppath}/%{name}-%{version}-root
 Requires        : shadow-utils
  
@@ -39,8 +38,6 @@ mv %{buildroot}/opt/%{name}/server/default/deploy/admin-console.war \
 mv %{buildroot}/opt/%{name}/server/default/deploy/jmx-console.war \
 	%{buildroot}/opt/%{name}/server/default/undeploy
 mv %{buildroot}/opt/%{name}/server/default/deploy/jbossws.sar \
-	%{buildroot}/opt/%{name}/server/default/undeploy
-mv %{buildroot}/opt/%{name}/server/default/deploy/jbossws-console.war \
 	%{buildroot}/opt/%{name}/server/default/undeploy
 mv %{buildroot}/opt/%{name}/server/default/deploy/jmx-remoting.sar \
 	%{buildroot}/opt/%{name}/server/default/undeploy
